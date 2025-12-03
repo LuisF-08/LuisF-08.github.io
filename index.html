@@ -10,13 +10,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         :root {
-            --cor-laranja: #FF6600;          /* Laranja vibrante para destaque */
-            --cor-fundo-wallpaper: #eafaff; /* << FUNDO AZUL BEBÊ (WALLPAPER) */
-            --cor-fundo-secao: #ffffff;      /* Branco para as seções de conteúdo */
-            --cor-texto-principal: #0a4f6d; /* Azul escuro para títulos */
-            --cor-texto-secundario: #557b8a;/* Azul acinzentado para parágrafos */
-            --cor-borda-sutil: #d6eaf5;     /* Borda azul bem clara */
-            --cor-fundo-tag: #d6f0ff;       /* Fundo para as tags de tecnologia */
+            /* PALETA DE CORES ATUALIZADA (TEMA DARK PREMIUM) */
+            --cor-laranja: #FF6600;           /* Mantido o laranja vibrante */
+            --cor-fundo-wallpaper: #0f172a;   /* Azul escuro profundo (quase preto) - Charmoso e Moderno */
+            --cor-fundo-secao: #1e293b;       /* Azul acinzentado escuro para os cartões */
+            --cor-texto-principal: #f1f5f9;   /* Branco gelo para títulos */
+            --cor-texto-secundario: #94a3b8;  /* Cinza claro para parágrafos */
+            --cor-borda-sutil: #334155;       /* Borda sutil escura */
+            --cor-fundo-tag: #334155;         /* Fundo das tags */
+            --cor-hover-card: #2dd4bf;        /* Um leve toque ciano para hover (opcional) ou manter laranja */
         }
 
         * {
@@ -27,7 +29,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--cor-fundo-wallpaper); /* APLICADO AQUI */
+            background-color: var(--cor-fundo-wallpaper);
             color: var(--cor-texto-secundario);
             line-height: 1.6;
         }
@@ -40,14 +42,8 @@
 
         /* Animações */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Cabeçalho */
@@ -69,6 +65,7 @@
             font-weight: 600;
             animation: fadeIn 1s ease-out 0.3s forwards;
             opacity: 0;
+            letter-spacing: 1px;
         }
 
         .links-sociais {
@@ -90,20 +87,21 @@
             transform: translateY(-3px);
         }
 
-        /* Seções */
+        /* Seções Gerais */
         section {
-            padding-top: 40px;
-            padding-bottom: 40px;
+            padding-top: 50px;
+            padding-bottom: 50px;
         }
         
-        /* Classe para seções que serão "cartões" brancos */
+        /* Classe para seções "cartões" */
         .secao-branca {
             background-color: var(--cor-fundo-secao);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 83, 131, 0.07);
-            margin: 40px 20px; /* Espaçamento entre as seções */
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Sombra mais escura */
+            margin: 40px 0;
             padding-top: 60px;
             padding-bottom: 60px;
+            border: 1px solid var(--cor-borda-sutil);
         }
 
         .titulo-secao {
@@ -131,47 +129,81 @@
         
         #sobre p {
             text-align: center;
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto;
             font-size: 1.1rem;
+            color: var(--cor-texto-secundario);
         }
 
-        /* Habilidades (Fica direto no wallpaper azul) */
+        /* --- NOVA ÁREA DE HABILIDADES --- */
         .habilidades-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Grid responsivo */
             gap: 30px;
-            flex-wrap: wrap;
             justify-content: center;
         }
 
         .habilidade-categoria {
             background: var(--cor-fundo-secao);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 35px;
+            border-radius: 12px;
             border: 1px solid var(--cor-borda-sutil);
-            box-shadow: 0 5px 15px rgba(0, 83, 131, 0.05);
-            flex: 1;
-            min-width: 280px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
         
         .habilidade-categoria:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 83, 131, 0.08);
+            transform: translateY(-7px);
+            border-color: var(--cor-laranja);
         }
 
         .habilidade-categoria h3 {
             color: var(--cor-texto-principal);
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--cor-laranja);
+            font-size: 1.35rem;
+            margin-bottom: 25px;
             padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 102, 0, 0.3);
+            display: flex;
+            align-items: center;
         }
         
-        .habilidade-categoria h3 i { margin-right: 12px; color: var(--cor-laranja); }
-        .habilidade-categoria ul { list-style: none; }
-        .habilidade-categoria li { margin-bottom: 12px; font-size: 1rem; }
-        .habilidade-categoria li i { width: 25px; color: var(--cor-laranja); margin-right: 8px; }
+        .habilidade-categoria h3 i { 
+            margin-right: 12px; 
+            color: var(--cor-laranja); 
+            font-size: 1.2rem;
+        }
+
+        .lista-habilidades {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lista-habilidades li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--cor-texto-secundario);
+            display: flex;
+            align-items: center;
+        }
+
+        .lista-habilidades li i {
+            width: 30px;
+            color: var(--cor-laranja);
+            font-size: 1.1rem;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        /* Pequena tag dentro da lista para destacar sub-itens (ex: Polars) */
+        .sub-tag {
+            font-size: 0.75rem;
+            background: rgba(255, 102, 0, 0.15);
+            color: var(--cor-laranja);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
 
         /* Projetos */
         .projetos-grid {
@@ -181,31 +213,52 @@
         }
 
         .projeto-card {
-            background: #f8feff;
-            border-radius: 10px;
+            background: var(--cor-fundo-wallpaper); /* Fundo escuro dentro do card */
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--cor-borda-sutil);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .projeto-card:hover { transform: translateY(-8px); }
-        .projeto-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .projeto-info h3 { font-size: 1.4rem; color: var(--cor-laranja); margin-bottom: 10px; }
-        .projeto-info h3 i { margin-right: 12px; }
-        .projeto-info p { margin-bottom: 20px; flex-grow: 1; }
+        .projeto-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .projeto-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .projeto-info h3 { 
+            font-size: 1.4rem; 
+            color: var(--cor-texto-principal); 
+            margin-bottom: 12px; 
+        }
+        
+        .projeto-info h3 i { color: var(--cor-laranja); margin-right: 10px; }
+        
+        .projeto-info p { 
+            margin-bottom: 25px; 
+            flex-grow: 1; 
+            color: var(--cor-texto-secundario); 
+        }
         
         .projeto-tecnologias span {
             background-color: var(--cor-fundo-tag);
-            color: var(--cor-texto-principal);
+            color: #e2e8f0;
             padding: 5px 12px;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 500;
             margin-right: 5px;
             display: inline-block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+
+        .projeto-tecnologias span:hover {
+            border-color: var(--cor-laranja);
+            color: #fff;
         }
 
         .btn {
@@ -214,15 +267,16 @@
             color: #fff;
             padding: 12px 24px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: center;
+            margin-top: 15px;
         }
 
-        .btn:hover { background: #e65c00; transform: scale(1.05); }
+        .btn:hover { background: #ff7b24; transform: scale(1.02); }
 
-        /* Contato (Fica direto no wallpaper azul) */
+        /* Contato */
         #contato p { text-align: center; max-width: 600px; margin: 0 auto 20px; }
         #contato a { color: var(--cor-laranja); text-decoration: none; font-weight: 600; }
         #contato a:hover { text-decoration: underline; }
@@ -231,7 +285,9 @@
         footer {
             color: var(--cor-texto-secundario);
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 60px 20px 30px;
+            border-top: 1px solid var(--cor-borda-sutil);
+            background-color: var(--cor-fundo-wallpaper);
         }
     </style>
 </head>
@@ -240,7 +296,7 @@
     <header>
         <div class="container">
             <h1>Luís Filipe Moreira Novais</h1>
-            <p>Analista de Dados e Automação</p>
+            <p>Desenvolvedor Backend & Engenharia de Dados</p>
             <div class="links-sociais">
                 <a href="https://www.linkedin.com/in/luis-filipe-moreira-356427381" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/DONkay-007" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -253,62 +309,74 @@
         <div class="container">
             <h2 class="titulo-secao">Sobre Mim</h2>
             <p>
-                Cursando Sistemas de Informação no IFBA, busco oportunidades como Analista de Dados e Automação. Meu objetivo é aplicar meus conhecimentos em Python, Power BI, SQL e n8n para desenvolver dashboards inteligentes, criar integrações automáticas e otimizar processos de negócio, gerando valor e insights através dos dados.
+                Cursando Sistemas de Informação no IFBA, atuo na intersecção entre Backeend , Análise\Engenharia de Dados e Automação. Meu foco é construir pipelines robustos e dashboards inteligentes, utilizando tecnologias modernas como Spark, Airflow e Python para transformar dados brutos em decisões estratégicas de negócio.
             </p>
         </div>
     </section>
 
+    <!-- SEÇÃO HABILIDADES TÉCNICAS REFEITA -->
     <section id="habilidades">
         <div class="container">
-            <h2 class="titulo-secao">Habilidades Técnicas</h2>
+            <h2 class="titulo-secao">Stack Tecnológica</h2>
             <div class="habilidades-container">
+                
+                <!-- Categoria 1: Engenharia de Dados & Cloud -->
                 <div class="habilidade-categoria">
-                    <h3><i class="fas fa-chart-pie"></i> Análise e Visualização</h3>
-                    <ul>
-                        <li><i class="fab fa-python"></i> Python (Pandas, NumPy)</li>
+                    <h3><i class="fas fa-server"></i> Engenharia de Dados & Cloud</h3>
+                    <ul class="lista-habilidades">
+                        <li><i class="fab fa-python"></i> Python <span class="sub-tag">PySpark</span> <span class="sub-tag">Polars</span></li>
+                        <li><i class="fas fa-wind"></i> Apache Airflow</li>
+                        <li><i class="fas fa-bolt"></i> Apache Spark</li>
+                        <li><i class="fab fa-aws"></i> AWS (Amazon Web Services)</li>
+                        <li><i class="fas fa-square-poll-vertical"></i> Databricks</li>
+                        <li><i class="fab fa-docker"></i> Docker</li>
+                    </ul>
+                </div>
+
+                <!-- Categoria 2: Desenvolvimento & Linguagens -->
+                <div class="habilidade-categoria">
+                    <h3><i class="fas fa-code"></i> Desenvolvimento & Linguagens</h3>
+                    <ul class="lista-habilidades">
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fab fa-node-js"></i> Node.js</li>
+                        <li><i class="fab fa-java"></i> Java</li>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fas fa-cubes"></i> Integração de APIs</li>
+                    </ul>
+                </div>
+
+                <!-- Categoria 3: Automação & Banco de Dados -->
+                <div class="habilidade-categoria">
+                    <h3><i class="fas fa-database"></i> Automação & Dados</h3>
+                    <ul class="lista-habilidades">
+                        <li><i class="fas fa-project-diagram"></i> n8n (Workflow Automation)</li>
+                        <li><i class="fas fa-database"></i> SQL (PostgreSQL, MySQL)</li>
+                        <li><i class="fas fa-layer-group"></i> NoSQL (MongoDB)</li>
                         <li><i class="fas fa-chart-bar"></i> Power BI</li>
-                        <li><i class="fas fa-database"></i> SQL e NoSQL</li>
-                        <li><i class="fas fa-file-excel"></i> Excel para Negócios</li>
-                        <li><i class="fas fa-brain"></i> Machine Learning (conceitos)</li>
+                        <li><i class="fas fa-table"></i> Excel Avançado</li>
                     </ul>
                 </div>
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-cogs"></i> Automação e Backend</h3>
-                    <ul>
-                        <li><i class="fas fa-sitemap"></i> n8n (Workflow Automation)</li>
-                        <li><i class="fas fa-code"></i> Desenvolvimento de Scripts</li>
-                        <li><i class="fas fa-bolt"></i> Integração de APIs</li>
-                        <li><i class="fas fa-recycle"></i> Otimização de Processos</li>
-                    </ul>
-                </div>
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-tools"></i> Ferramentas e Outros</h3>
-                    <ul>
-                        <li><i class="fab fa-git-alt"></i> Git (Versionamento)</li>
-                        <li><i class="fab fa-github"></i> GitHub</li>
-                        <li><i class="fas fa-globe"></i> Inglês Técnico</li>
-                        <li><i class="fas fa-comments"></i> Comunicação e Colaboração</li>
-                    </ul>
-                </div>
+
             </div>
         </div>
     </section>
 
     <section id="projetos" class="secao-branca">
         <div class="container">
-            <h2 class="titulo-secao">Projetos</h2>
+            <h2 class="titulo-secao">Projetos Recentes</h2>
             <div class="projetos-grid">
                 <!-- Projeto 1 -->
                 <div class="projeto-card">
                     <div class="projeto-info">
-                        <h3><i class="fas fa-chart-line"></i> Dashboard de Vendas com Automação</h3>
+                        <h3><i class="fas fa-robot"></i> Pipeline de Vendas & ML</h3>
                         <p>
-                            Criação de um dashboard para análise de vendas, utilizando n8n para automação da coleta de dados e Machine Learning com Python para gerar insights e previsões.
+                            Automação completa da coleta de dados utilizando n8n, processamento com Python e aplicação de modelos de Machine Learning para previsão de vendas.
                         </p>
                         <div class="projeto-tecnologias">
                             <span>Python</span>
                             <span>n8n</span>
                             <span>Machine Learning</span>
+                            <span>SQL</span>
                         </div>
                         <a href="https://github.com/DONkay-007/Dashbord-Vendas" class="btn" target="_blank">Ver no GitHub</a>
                     </div>
@@ -316,13 +384,13 @@
                 <!-- Projeto 2 -->
                 <div class="projeto-card">
                     <div class="projeto-info">
-                        <h3><i class="fas fa-palette"></i> Análise de Vendas (Creative Agência)</h3>
+                        <h3><i class="fas fa-chart-pie"></i> Analytics para Design</h3>
                         <p>
-                           Análise detalhada dos dados de vendas para uma agência de design. O resultado foi um dashboard em Power BI para visualização de métricas e KPIs importantes para o negócio.
+                           Solução de Business Intelligence para a Creative Agência. Desenvolvimento de ETL e Dashboard interativo no Power BI para monitoramento de KPIs.
                         </p>
                         <div class="projeto-tecnologias">
                              <span>Power BI</span>
-                             <span>Python</span>
+                             <span>ETL</span>
                              <span>Análise de Dados</span>
                         </div>
                         <a href="https://github.com/DONkay-007/Analise_Completa" class="btn" target="_blank">Ver no GitHub</a>
@@ -336,17 +404,18 @@
         <div class="container">
             <h2 class="titulo-secao">Contato</h2>
             <p>
-                Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato através do meu e-mail ou conectar-se comigo no LinkedIn.
+                Estou disponível para projetos de Engenharia de Dados e desenvolvimento de automações. Vamos conversar sobre como posso agregar valor ao seu time.
             </p>
-            <p>
-                <strong>E-mail:</strong> <a href="mailto:luisfilipemnovais@gmail.com">luisfilipemnovais@gmail.com</a>
+            <p style="text-align: center; font-size: 1.1rem;">
+                <i class="fas fa-envelope" style="color: var(--cor-laranja); margin-right: 8px;"></i>
+                <a href="mailto:luisfilipemnovais@gmail.com">luisfilipemnovais@gmail.com</a>
             </p>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 - Desenvolvido por Luís Filipe Moreira Novais</p>
+            <p>&copy; 2026 - Luís Filipe Moreira Novais</p>
         </div>
     </footer>
 
