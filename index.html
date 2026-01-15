@@ -3,421 +3,539 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | Luís Filipe Moreira Novais</title>
-    <!-- Biblioteca de ícones (Font Awesome) -->
+    <meta name="description" content="Portfólio de Luís Filipe Moreira Novais - Desenvolvedor Backend e Engenheiro de Dados.">
+    <title>Luís Filipe | Backend & Data</title>
+    
+    <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Fontes (Outfit, Inter e Fira Code para o terminal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
         :root {
-            /* PALETA DE CORES ATUALIZADA (TEMA DARK PREMIUM) */
-            --cor-laranja: #FF6600;           /* Mantido o laranja vibrante */
-            --cor-fundo-wallpaper: #0f172a;   /* Azul escuro profundo (quase preto) - Charmoso e Moderno */
-            --cor-fundo-secao: #1e293b;       /* Azul acinzentado escuro para os cartões */
-            --cor-texto-principal: #f1f5f9;   /* Branco gelo para títulos */
-            --cor-texto-secundario: #94a3b8;  /* Cinza claro para parágrafos */
-            --cor-borda-sutil: #334155;       /* Borda sutil escura */
-            --cor-fundo-tag: #334155;         /* Fundo das tags */
-            --cor-hover-card: #2dd4bf;        /* Um leve toque ciano para hover (opcional) ou manter laranja */
+            /* --- PALETA MODERN CHARM --- */
+            --bg-deep: #050a14;
+            --primary-purple: #8b5cf6;
+            --primary-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(15, 23, 42, 0.6); /* Vidro fosco */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--cor-fundo-wallpaper);
-            color: var(--cor-texto-secundario);
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #1e1b4b 0%, #050a14 50%, #020617 100%);
+            color: var(--text-muted);
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
+
+        /* Canvas das Partículas (Fundo) */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Fica atrás de tudo */
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Animações */
+        /* --- GRADIENTES E UTILITÁRIOS --- */
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-padding { padding: 100px 0; }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .social-icons {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .social-icons a {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+        }
+        .social-icons a:hover { color: var(--accent-cyan); transform: scale(1.1); }
+
+        /* --- MACOS TERMINAL EFFECT (SOBRE MIM) --- */
+        .terminal-window {
+            background: #1e1e1e; /* Cor fundo VS Code */
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .terminal-header {
+            background: #252526;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 20px;
+            color: #9da5b4;
+            font-size: 0.85rem;
+        }
+
+        .terminal-body {
+            padding: 25px;
+            color: #d4d4d4;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Syntax Highlighting Simulado */
+        .code-def { color: #c678dd; } /* Roxo (def/class) */
+        .code-class { color: #e5c07b; } /* Amarelo (Nome Classe) */
+        .code-var { color: #e06c75; } /* Vermelho (Variaveis) */
+        .code-string { color: #98c379; } /* Verde (Strings) */
+        .code-comment { color: #5c6370; font-style: italic; } /* Cinza (Comentários) */
+        .code-keyword { color: #56b6c2; } /* Ciano */
+
+        /* --- CARDS COM EFEITO GLASS --- */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin: 3px;
+            border: 1px solid transparent;
+        }
+        
+        .tag:hover { border-color: var(--accent-cyan); color: #fff; }
+
+        /* Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-link {
+            margin-top: 15px;
+            display: inline-block;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 40px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            margin-top: 50px;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cabeçalho */
-        header {
-            padding: 6rem 0;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 3rem;
-            color: var(--cor-texto-principal);
-            margin-bottom: 0.5rem;
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: var(--cor-laranja);
-            font-weight: 600;
-            animation: fadeIn 1s ease-out 0.3s forwards;
-            opacity: 0;
-            letter-spacing: 1px;
-        }
-
-        .links-sociais {
-            margin-top: 1.5rem;
-            animation: fadeIn 1s ease-out 0.6s forwards;
-            opacity: 0;
-        }
-
-        .links-sociais a {
-            color: var(--cor-texto-principal);
-            text-decoration: none;
-            font-size: 1.6rem;
-            margin: 0 15px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .links-sociais a:hover {
-            color: var(--cor-laranja);
-            transform: translateY(-3px);
-        }
-
-        /* Seções Gerais */
-        section {
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
-        
-        /* Classe para seções "cartões" */
-        .secao-branca {
-            background-color: var(--cor-fundo-secao);
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Sombra mais escura */
-            margin: 40px 0;
-            padding-top: 60px;
-            padding-bottom: 60px;
-            border: 1px solid var(--cor-borda-sutil);
-        }
-
-        .titulo-secao {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            color: var(--cor-texto-principal);
-            position: relative;
-        }
-        
-        .titulo-secao::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: var(--cor-laranja);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-        
-        #sobre .container {
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.5s forwards;
-        }
-        
-        #sobre p {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--cor-texto-secundario);
-        }
-
-        /* --- NOVA ÁREA DE HABILIDADES --- */
-        .habilidades-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Grid responsivo */
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .habilidade-categoria {
-            background: var(--cor-fundo-secao);
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid var(--cor-borda-sutil);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .habilidade-categoria:hover {
-            transform: translateY(-7px);
-            border-color: var(--cor-laranja);
-        }
-
-        .habilidade-categoria h3 {
-            color: var(--cor-texto-principal);
-            font-size: 1.35rem;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255, 102, 0, 0.3);
-            display: flex;
-            align-items: center;
-        }
-        
-        .habilidade-categoria h3 i { 
-            margin-right: 12px; 
-            color: var(--cor-laranja); 
-            font-size: 1.2rem;
-        }
-
-        .lista-habilidades {
-            list-style: none;
-            padding: 0;
-        }
-
-        .lista-habilidades li {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            color: var(--cor-texto-secundario);
-            display: flex;
-            align-items: center;
-        }
-
-        .lista-habilidades li i {
-            width: 30px;
-            color: var(--cor-laranja);
-            font-size: 1.1rem;
-            text-align: center;
-            margin-right: 10px;
-        }
-
-        /* Pequena tag dentro da lista para destacar sub-itens (ex: Polars) */
-        .sub-tag {
-            font-size: 0.75rem;
-            background: rgba(255, 102, 0, 0.15);
-            color: var(--cor-laranja);
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 8px;
-            font-weight: 600;
-        }
-
-        /* Projetos */
-        .projetos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .projeto-card {
-            background: var(--cor-fundo-wallpaper); /* Fundo escuro dentro do card */
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--cor-borda-sutil);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .projeto-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .projeto-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        
-        .projeto-info h3 { 
-            font-size: 1.4rem; 
-            color: var(--cor-texto-principal); 
-            margin-bottom: 12px; 
-        }
-        
-        .projeto-info h3 i { color: var(--cor-laranja); margin-right: 10px; }
-        
-        .projeto-info p { 
-            margin-bottom: 25px; 
-            flex-grow: 1; 
-            color: var(--cor-texto-secundario); 
-        }
-        
-        .projeto-tecnologias span {
-            background-color: var(--cor-fundo-tag);
-            color: #e2e8f0;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-right: 5px;
-            display: inline-block;
-            margin-bottom: 8px;
-            border: 1px solid transparent;
-        }
-
-        .projeto-tecnologias span:hover {
-            border-color: var(--cor-laranja);
-            color: #fff;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--cor-laranja);
-            color: #fff;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .btn:hover { background: #ff7b24; transform: scale(1.02); }
-
-        /* Contato */
-        #contato p { text-align: center; max-width: 600px; margin: 0 auto 20px; }
-        #contato a { color: var(--cor-laranja); text-decoration: none; font-weight: 600; }
-        #contato a:hover { text-decoration: underline; }
-
-        /* Rodapé */
-        footer {
-            color: var(--cor-texto-secundario);
-            text-align: center;
-            padding: 60px 20px 30px;
-            border-top: 1px solid var(--cor-borda-sutil);
-            background-color: var(--cor-fundo-wallpaper);
+        @media(max-width: 768px) {
+            .terminal-body { font-size: 0.85rem; overflow-x: scroll; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Canvas para Partículas JS -->
+    <canvas id="particles-js"></canvas>
+
+    <!-- HERO -->
     <header>
-        <div class="container">
-            <h1>Luís Filipe Moreira Novais</h1>
-            <p>Desenvolvedor Backend & Engenheiro de Dados</p>
-            <div class="links-sociais">
-                <a href="https://www.linkedin.com/in/luis-filipe-moreira-356427381" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/DONkay-007" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:luisfilipemnovais@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="container hero-content">
+            <p style="color: var(--accent-cyan); font-weight: 600; letter-spacing: 2px; margin-bottom: 10px;">HELLO, WORLD</p>
+            <h1>Luís Filipe <br> <span class="gradient-text">Moreira Novais</span></h1>
+            <p style="max-width: 600px; margin: 20px auto; font-size: 1.2rem;">
+                Construindo o futuro com <strong>Python, Django e Engenharia de Dados</strong>.
+            </p>
+            
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/luis-filipe-moreira" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/LuisF-08" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:luisfilipemnovais@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
+
+            <a href="#projetos" class="btn">Explorar Projetos <i class="fas fa-code"></i></a>
         </div>
     </header>
 
-    <section id="sobre" class="secao-branca">
+    <!-- SOBRE MIM (MACOS TERMINAL STYLE) -->
+    <section id="sobre" class="section-padding">
         <div class="container">
-            <h2 class="titulo-secao">Sobre Mim</h2>
-            <p>
-                Cursando Sistemas de Informação no IFBA, atuo na intersecção entre Backeend , Análise\Engenharia de Dados e Automação. Meu foco é construir pipelines robustos e dashboards inteligentes, utilizando tecnologias modernas como Spark, Airflow e Python para transformar dados brutos em decisões estratégicas de negócio.
-            </p>
+            <h2 class="section-title">Quem sou eu?</h2>
+            
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="terminal-title">user@luis-portfolio: ~/perfil.py</div>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="code-def">class</span> <span class="code-class">Desenvolvedor</span>:</p>
+                    <p style="padding-left: 20px;">
+                        <span class="code-def">def</span> <span class="code-keyword">__init__</span>(<span class="code-var">self</span>):
+                    </p>
+                    <p style="padding-left: 40px;">
+                        <span class="code-var">self</span>.nome = <span class="code-string">"Luís Filipe Moreira Novais"</span>
+                    </p>
+                    <p style="padding-left: 40px;">
+                        <span class="code-var">self</span>.formacao = <span class="code-string">"Sistemas de Informação (IFBA)"</span>
+                    </p>
+                    <p style="padding-left: 40px;">
+                        <span class="code-var">self</span>.foco = [<span class="code-string">"Backend"</span>, <span class="code-string">"Engenharia de Dados"</span>, <span class="code-string">"Automação"</span>]
+                    </p>
+                    <br>
+                    <p style="padding-left: 20px;">
+                        <span class="code-def">def</span> <span class="code-keyword">resumo_profissional</span>(<span class="code-var">self</span>):
+                    </p>
+                    <p style="padding-left: 40px;">
+                        <span class="code-comment"># Atualmente no projeto CAPACITA CEPEDI</span>
+                    </p>
+                    <p style="padding-left: 40px;">
+                        return <span class="code-string">"""<br>
+                        &nbsp;&nbsp;Sou um estudante do 3º semestre buscando estágio.<br>
+                        &nbsp;&nbsp;Tenho paixão por transformar dados em soluções e <br>
+                        &nbsp;&nbsp;criar APIs robustas com Python/Django.<br>
+                        &nbsp;&nbsp;Sou organizado, extrovertido e focado em evoluir.<br>
+                        &nbsp;&nbsp;"""</span>
+                    </p>
+                    <br>
+                    <p><span class="code-keyword">print</span>(Desenvolvedor().resumo_profissional())</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO HABILIDADES TÉCNICAS REFEITA -->
-    <section id="habilidades">
+    <!-- SKILLS -->
+    <section id="skills" class="section-padding">
         <div class="container">
-            <h2 class="titulo-secao">Stack Tecnológica</h2>
-            <div class="habilidades-container">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="skills-container">
                 
-                <!-- Categoria 1: Engenharia de Dados & Cloud -->
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-server"></i> Engenharia de Dados & Cloud</h3>
-                    <ul class="lista-habilidades">
-                        <li><i class="fab fa-python"></i> Python <span class="sub-tag">PySpark</span> <span class="sub-tag">Polars</span></li>
-                        <li><i class="fas fa-wind"></i> Apache Airflow</li>
-                        <li><i class="fas fa-bolt"></i> Apache Spark</li>
-                        <li><i class="fab fa-aws"></i> AWS (Amazon Web Services)</li>
-                        <li><i class="fas fa-square-poll-vertical"></i> Databricks</li>
-                        <li><i class="fab fa-docker"></i> Docker</li>
-                    </ul>
+                <!-- Box 1: Backend -->
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px; color: var(--accent-cyan);"><i class="fas fa-server"></i> Backend</h3>
+                    <div>
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">Java (Spring)</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
                 </div>
 
-                <!-- Categoria 2: Desenvolvimento & Linguagens -->
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-code"></i> Desenvolvimento & Linguagens</h3>
-                    <ul class="lista-habilidades">
-                        <li><i class="fab fa-js"></i> JavaScript</li>
-                        <li><i class="fab fa-node-js"></i> Node.js</li>
-                        <li><i class="fab fa-java"></i> Java</li>
-                        <li><i class="fab fa-php"></i> PHP</li>
-                        <li><i class="fas fa-cubes"></i> Integração de APIs</li>
-                    </ul>
+                <!-- Box 2: Frontend (NOVO) -->
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px; color: var(--accent-cyan);"><i class="fas fa-laptop-code"></i> Frontend</h3>
+                    <div>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Bootstrap</span>
+                    </div>
                 </div>
 
-                <!-- Categoria 3: Automação & Banco de Dados -->
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-database"></i> Automação & Dados</h3>
-                    <ul class="lista-habilidades">
-                        <li><i class="fas fa-project-diagram"></i> n8n (Workflow Automation)</li>
-                        <li><i class="fas fa-database"></i> SQL (PostgreSQL, MySQL)</li>
-                        <li><i class="fas fa-layer-group"></i> NoSQL (MongoDB)</li>
-                        <li><i class="fas fa-chart-bar"></i> Power BI</li>
-                        <li><i class="fas fa-table"></i> Excel Avançado</li>
-                    </ul>
+                <!-- Box 3: Dados -->
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px; color: var(--accent-cyan);"><i class="fas fa-database"></i> Dados</h3>
+                    <div>
+                        <span class="tag">SQL / NoSQL</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+
+                <!-- Box 4: Ferramentas -->
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px; color: var(--accent-cyan);"><i class="fas fa-tools"></i> Ferramentas</h3>
+                    <div>
+                        <span class="tag">Git / GitHub</span>
+                        <span class="tag">N8N</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Linux</span>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="projetos" class="secao-branca">
+    <!-- PROJETOS -->
+    <section id="projetos" class="section-padding">
         <div class="container">
-            <h2 class="titulo-secao">Projetos Recentes</h2>
-            <div class="projetos-grid">
-                <!-- Projeto 1 -->
-                <div class="projeto-card">
-                    <div class="projeto-info">
-                        <h3><i class="fas fa-robot"></i> Pipeline de Vendas & ML</h3>
-                        <p>
-                            Automação completa da coleta de dados utilizando n8n, processamento com Python e aplicação de modelos de Machine Learning para previsão de vendas.
-                        </p>
-                        <div class="projeto-tecnologias">
-                            <span>Python</span>
-                            <span>n8n</span>
-                            <span>Machine Learning</span>
-                            <span>SQL</span>
-                        </div>
-                        <a href="https://github.com/DONkay-007/Dashbord-Vendas" class="btn" target="_blank">Ver no GitHub</a>
+            <h2 class="section-title">Projetos</h2>
+            <div class="projects-grid">
+                
+                <!-- P1 -->
+                <div class="glass-card">
+                    <h3 style="color: #fff;">Gerenciador de Tarefas</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0; color: #cbd5e1;">
+                        Sistema Web Fullstack com Django. Arquitetura MVT, CRUD completo, Auth e Docker.
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <span class="tag" style="border-color: var(--primary-purple);">Django</span>
+                        <span class="tag">Postgres</span>
+                        <span class="tag">Docker</span>
                     </div>
+                    <a href="https://github.com/LuisF-08/Gerenciador_Tarefas" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
                 </div>
-                <!-- Projeto 2 -->
-                <div class="projeto-card">
-                    <div class="projeto-info">
-                        <h3><i class="fas fa-chart-pie"></i> Analytics para Design</h3>
-                        <p>
-                           Solução de Business Intelligence para a Creative Agência. Desenvolvimento de ETL e Dashboard interativo no Power BI para monitoramento de KPIs.
-                        </p>
-                        <div class="projeto-tecnologias">
-                             <span>Power BI</span>
-                             <span>ETL</span>
-                             <span>Análise de Dados</span>
-                        </div>
-                        <a href="https://github.com/DONkay-007/Analise_Completa" class="btn" target="_blank">Ver no GitHub</a>
+
+                <!-- P2 -->
+                <div class="glass-card">
+                    <h3 style="color: #fff;">Data Lake Medalhão</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0; color: #cbd5e1;">
+                        Pipeline de Engenharia de Dados. ETL de APIs, camadas Bronze/Silver/Gold e Docker.
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <span class="tag" style="border-color: var(--primary-purple);">Python ETL</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Data Engineering</span>
                     </div>
+                    <a href="https://github.com/LuisF-08/Projeto_Medalha" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
                 </div>
+
+                <!-- P3 -->
+                <div class="glass-card">
+                    <h3 style="color: #fff;">Analytics Creative</h3>
+                    <p style="font-size: 0.9rem; margin: 10px 0; color: #cbd5e1;">
+                        Solução de BI comercial. Tratamento de dados com Python e Dashboards de KPIs.
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <span class="tag" style="border-color: var(--primary-purple);">Power BI</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Business Intelligence</span>
+                    </div>
+                    <span style="font-size: 0.8rem; opacity: 0.7;"><i class="fas fa-lock"></i> Confidencial</span>
+                </div>
+
             </div>
         </div>
     </section>
-    
-    <section id="contato">
+
+    <!-- CONTATO -->
+    <section class="section-padding" style="text-align: center;">
         <div class="container">
-            <h2 class="titulo-secao">Contato</h2>
-            <p>
-                Estou disponível para projetos de Engenharia de Dados e desenvolvimento de automações. Vamos conversar sobre como posso agregar valor ao seu time.
-            </p>
-            <p style="text-align: center; font-size: 1.1rem;">
-                <i class="fas fa-envelope" style="color: var(--cor-laranja); margin-right: 8px;"></i>
-                <a href="mailto:luisfilipemnovais@gmail.com">luisfilipemnovais@gmail.com</a>
-            </p>
+            <h2 class="section-title">Vamos conversar?</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://wa.me/5577999081860" target="_blank" class="btn" style="background: #25D366;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:luisfilipemnovais@gmail.com" class="btn">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 - Luís Filipe Moreira Novais</p>
-        </div>
+        <p>&copy; 2025 Luís Filipe. Desenvolvido com <i class="fas fa-heart" style="color: var(--primary-purple);"></i> e Código.</p>
     </footer>
 
+    <!-- SCRIPT DE PARTÍCULAS (Vanilla JS) -->
+    <script>
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+        
+        let particlesArray;
+
+        // Ajusta tamanho do canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.1; // Tamanho das bolinhas
+                this.speedX = Math.random() * 1 - 0.5; // Velocidade X
+                this.speedY = Math.random() * 1 - 0.5; // Velocidade Y
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Se bater na borda, volta
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(139, 92, 246, 0.5)'; // Roxo translúcido
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 15000; // Densidade
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                
+                // Conexões (Linhas)
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${0.1 - distance/1500})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Redimensionar janela
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+    </script>
 </body>
 </html>
