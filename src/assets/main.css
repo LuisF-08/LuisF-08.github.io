@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "./base.css";
+
+@variant dark (&:where(.dark, .dark *));
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Background Modo Claro */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse 1200px 700px at 15% 10%,
+        rgba(0, 0, 0, 0.05),
+        transparent 40%
+    ), white;
+    transition: background 0.5s ease;
+}
+    
+/* Background Modo Escuro Combinado (Sem duplicar) */
+.dark .background {
+    background:
+    radial-gradient(
+        ellipse 1200px 700px at 15% 10%,
+        rgba(251,146,60,.12),
+        transparent 70%
+    ),
+    radial-gradient(
+        ellipse 1000px 500px at 85% 20%,
+        rgba(136,251,60,.12),
+        transparent 70%
+    ),
+    radial-gradient(
+        ellipse 1000px 800px at 50% 100%,
+        rgba(168,85,247,.10),
+        transparent 70%
+    ), black;
+}
