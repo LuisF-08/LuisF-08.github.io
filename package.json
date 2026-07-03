@@ -11,7 +11,9 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "oxfmt src/"
+    "format": "oxfmt src/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b main"
   },
   "dependencies": {
     "@egjs/flicking-plugins": "^4.8.1",
