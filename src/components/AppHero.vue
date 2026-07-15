@@ -10,7 +10,7 @@
         </h1>
   
         <h2 class="mt-4 text-xl sm:text-2xl font-semibold text-zinc-700 dark:text-zinc-300">
-          Desenvolvedor Full Stack
+          Desenvolvimento Full Stack, Anáise de Dados e Automações.
         </h2>
   
         <p class="mt-6 text-base sm:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto lg:mx-0">

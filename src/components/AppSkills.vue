@@ -11,8 +11,9 @@
     </div>
 
     <div class="text-center mb-16 sm:mb-20 px-2">
-      <div class="relative inline-block max-w-full">
-        <div class="absolute -inset-2 -z-10 bg-orange-500/20 dark:bg-orange-400/30 blur-xl rounded-2xl pointer-events-none"></div>
+      <div class="relative inline-block w-full">
+        <div class="absolute -inset-2 -z-10 bg-orange-500/20 dark:bg-orange-400/30 blur-xl
+             rounded-2xl pointer-events-none"></div>
         <h2 class="relative inline-flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3
                    text-2xl xs:text-3xl sm:text-5xl whitespace-nowrap
                    font-extrabold tracking-wide rounded-xl border cursor-default select-none transition-colors duration-300
@@ -25,18 +26,19 @@
       </div>
     </div>
 
-    <section id="skills" class="w-full overflow-hidden mt-4 py-10">
+    <section id="skills" class="w-full mt-4 py-10">
       
       <Flicking 
         :options="{ 
-          align: 'center', 
+          align: 'prev', 
           circular: skills.length > 6, 
           moveType: 'freeScroll', 
           duration: 500,
-          bound: skills.length <= 6
+          bound: skills.length <= 6,
+          renderOnlyVisible: false
         }"
         :plugins="plugins"
-        class="w-full py-6"
+        class="w-full py-6 skills-carousel"
       >
         <div 
           v-for="(skill, index) in skills" 
@@ -71,7 +73,7 @@ import { AutoPlay } from '@egjs/flicking-plugins';
 
 const plugins = [
   new AutoPlay({ 
-    duration: 3000,               
+    duration: 1000,               
     direction: 'NEXT',            
     stopOnHover: true            
   })
@@ -91,3 +93,14 @@ const skills = ref([
   { name: 'Excel', icon:'pi pi-table'},
 ]);
 </script>
+
+<style scoped>
+/* Garante que o Flicking use 100% da largura do container e
+   que o primeiro/último painel colem nas bordas em vez de sobrar espaço */
+.skills-carousel :deep(.flicking-viewport) {
+  width: 100%;
+}
+.skills-carousel :deep(.flicking-camera) {
+  will-change: transform;
+}
+</style>

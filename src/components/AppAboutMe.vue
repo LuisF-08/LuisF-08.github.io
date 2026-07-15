@@ -47,16 +47,16 @@
                 style="background-color: #e65d1e; color: #fff; width: 2.5rem; height: 2.5rem;"
               />
               <div class="p-4 font-bold bg-orange-500 rounded-2xl rounded-bl-none text-xl">
-                Olá,me chamo Luís! sou um alguém apaixonado por tecnologia, gosto de Desenvolver aplicações
-                e soluções inteligentes, desde Landing pages até automações de escritórios e análises de dados,
-                está precisando de alguma solução inteligente? me mande mensagem para conversamos sobre!
+                Olá! Meu nome é Luís. 
+                Sou um desenvolvedor apaixonado por tecnologia, que ama criar aplicações e soluções inteligentes. Trabalho desde landing pages modernas até automações de processos para escritórios e análises de dados.
+                Está precisando de uma solução sob medida? Me manda uma mensagem que conversamos!
               </div>
             </div>
 
             <!-- Sua Mensagem (Alinhada à direita) -->
             <div class="flex items-end gap-2 max-w-[80%] self-end justify-end">
               <div class="font-bold p-3 bg-orange-500 rounded-2xl rounded-br-none text-xl">
-                Olá, gostaria que realiza-se um serviço para mim
+                Olá, gostaria de conversar sobre um projeto...
               </div>
             </div>
 

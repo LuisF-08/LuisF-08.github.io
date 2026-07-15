@@ -102,5 +102,26 @@ const projetos = ref([
     descricao: 'Gerenciador de Tarefas web com busca, exclusão, criação e alteração de campos e com notificação de tarefas mais prioritárias.',
     ferramentas: ['Python', 'Django', 'Bootstrap', 'PostgreSQL', 'HTML5', 'CSS3', 'Django Rest Framework'],
   },
+  {
+    id: 4,
+    imagem: 'auto_resumo_emails.png',
+    nome: ' Automação de Envio de Resumo',
+    descricao: 'Automação feita no n8n para envio de resumo de todos os emails diárias, com filtragem de prioridade, sendo cutomizavel seu layout de envio',
+    ferramentas: ['N8N','Javascript','Gemini API','Gmail API', "HTML", 'CSS'],
+  },
+  {
+    id: 5,
+    imagem: 'auto_busca_empresas.png',
+    nome: ' Automação de Busca de Empresas próximas',
+    descricao: 'Automação feita no n8n para busca de empresas por localidade me até 20km,com especificação do comercio, local, nome e demais informações das empresas',
+    ferramentas: ['N8N','Javascript','Overpass API', "HTML", 'CSS'],
+  },
+  {
+    id: 6,
+    imagem: 'tela-cepedi.jpeg',
+    nome: 'Sistema de alocação de Aulas para Professores',
+    descricao: 'Sistemas feito em Conjunto com 8 integrantes para a Fase 2 do CAPACITA CEPEDI, Serve de Apoio a professores para alocação de aulas ',
+    ferramentas:['Python', 'Django', 'Bootstrap', 'PostgreSQL', 'HTML5', 'CSS3', 'Django Rest Framework', 'Figma', 'UI/UX'],
+  },
 ])
 </script>
